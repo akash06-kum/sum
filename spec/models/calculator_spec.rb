@@ -25,5 +25,11 @@ RSpec.describe Calculator, type: :model do
       expect(Calculator.add("5\n10\n15")).to eq(30)
       expect(Calculator.add("2\n4\n6\n8")).to eq(20)
     end
+
+    it "allows changing the delimiter and returns the sum" do
+      expect(Calculator.add("//;\n1;2")).to eq(3)
+      expect(Calculator.add("//|\n1|2|3")).to eq(6)
+      expect(Calculator.add("//-\n5-10-15")).to eq(30)
+    end
   end
 end
