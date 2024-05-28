@@ -9,6 +9,11 @@ class Calculator
     end
 
     numbers.gsub!("\n", delimiter)
-    numbers.split(delimiter).map(&:to_i).sum
+    numbers_arr = numbers.split(delimiter).map(&:to_i)
+
+    negatives = numbers_arr.select { |num| num < 0 }
+    raise "negative numbers not allowed #{negatives.join(',')}" if negatives.any?
+
+    numbers_arr.sum
   end
 end
